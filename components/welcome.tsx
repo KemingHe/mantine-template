@@ -1,7 +1,8 @@
+import type { JSX } from 'react';
 import { Anchor, Text, Title } from '@mantine/core';
-import classes from './Welcome.module.css';
+import classes from '@/components/welcome.module.css';
 
-export function Welcome() {
+export const Welcome = (): JSX.Element => {
   return (
     <>
       <Title className={classes.title} ta="center" mt={100}>
@@ -20,4 +21,4 @@ export function Welcome() {
       </Text>
     </>
   );
-}
+};

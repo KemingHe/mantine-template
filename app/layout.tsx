@@ -1,28 +1,23 @@
 import '@mantine/core/styles.css';
 
-import React from 'react';
+import type { JSX } from 'react';
 import { ColorSchemeScript, mantineHtmlProps, MantineProvider } from '@mantine/core';
-import { theme } from '../theme';
+import { theme } from '@/theme';
+import type { LayoutProps } from '@/types/app-props';
 
-export const metadata = {
-  title: 'Mantine Next.js template',
-  description: 'I am using Mantine with Next.js!',
-};
+export { metadata } from '@/app-config/metadata';
 
-export default function RootLayout({ children }: { children: any }) {
+const Layout = ({ children }: LayoutProps): JSX.Element => {
   return (
     <html lang="en" {...mantineHtmlProps}>
       <head>
         <ColorSchemeScript />
-        <link rel="shortcut icon" href="/favicon.svg" />
-        <meta
-          name="viewport"
-          content="minimum-scale=1, initial-scale=1, width=device-width, user-scalable=no"
-        />
       </head>
       <body>
         <MantineProvider theme={theme}>{children}</MantineProvider>
       </body>
     </html>
   );
-}
+};
+
+export default Layout;

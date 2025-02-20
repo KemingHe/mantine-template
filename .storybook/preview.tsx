@@ -4,6 +4,7 @@ import React, { useEffect } from 'react';
 import { addons } from '@storybook/preview-api';
 import { DARK_MODE_EVENT_NAME } from 'storybook-dark-mode';
 import { MantineProvider, useMantineColorScheme } from '@mantine/core';
+// Storybook requires using relative path to import theme.
 import { theme } from '../theme';
 
 export const parameters = {

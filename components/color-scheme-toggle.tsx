@@ -1,8 +1,9 @@
 'use client';
 
+import type { JSX } from 'react';
 import { Button, Group, useMantineColorScheme } from '@mantine/core';
 
-export function ColorSchemeToggle() {
+export const ColorSchemeToggle = (): JSX.Element => {
   const { setColorScheme } = useMantineColorScheme();
 
   return (
@@ -12,4 +13,4 @@ export function ColorSchemeToggle() {
       <Button onClick={() => setColorScheme('auto')}>Auto</Button>
     </Group>
   );
-}
+};
