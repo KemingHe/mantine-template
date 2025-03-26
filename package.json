@@ -1,8 +1,32 @@
 {
+  "private": true,
+  "type": "module",
   "name": "mantine-template",
   "version": "0.1.0",
   "description": "SaaS template built with Mantine, including AI chat, auth, admin dashboard, etc. MIT License.",
-  "private": true,
+  "keywords": [
+    "nextjs",
+    "mantine",
+    "react",
+    "typescript",
+    "saas",
+    "template"
+  ],
+  "author": {
+    "name": "Keming He",
+    "email": "keminghe.career@gmail.com",
+    "url": "https://www.linkedin.com/in/keminghe/"
+  },
+  "license": "MIT",
+  "homepage": "https://mantine-template.buckeye.chat",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KemingHe/mantine-template.git"
+  },
+  "bugs": {
+    "url": "https://github.com/KemingHe/mantine-template/issues/new",
+    "email": "keminghe.career@gmail.com"
+  },
   "scripts": {
     "prepare": "husky",
     "dev": "next dev",
@@ -67,7 +91,6 @@
   "pnpm": {
     "onlyBuiltDependencies": [
       "@biomejs/biome",
-      "core-js-pure",
       "esbuild",
       "sharp"
     ]
