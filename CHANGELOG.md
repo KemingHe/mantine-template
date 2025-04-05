@@ -1,5 +1,11 @@
 # mantine-template
 
+## 0.1.2
+
+### Patch Changes
+
+- [#9](https://github.com/KemingHe/mantine-template/pull/9) [`e7f0b93`](https://github.com/KemingHe/mantine-template/commit/e7f0b93ab3b244b4b28acd02f1c0c9ab98426d20) Thanks [@KemingHe](https://github.com/KemingHe)! - Updated dependencies to next patch or minor versions.
+
 ## 0.1.1
 
 ### Patch Changes
