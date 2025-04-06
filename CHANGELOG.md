@@ -1,5 +1,13 @@
 # mantine-template
 
+## 0.1.3
+
+### Patch Changes
+
+- [#11](https://github.com/KemingHe/mantine-template/pull/11) [`8a08787`](https://github.com/KemingHe/mantine-template/commit/8a087874a0613462bc5ce9034b04d7b63b4cbedc) Thanks [@KemingHe](https://github.com/KemingHe)! - Updated pnpm pkg manager and added necessary build approvals.
+
+- [#11](https://github.com/KemingHe/mantine-template/pull/11) [`8c6773c`](https://github.com/KemingHe/mantine-template/commit/8c6773c81c3fca483b10069a67757387c02326d3) Thanks [@KemingHe](https://github.com/KemingHe)! - Updated deps.
+
 ## 0.1.2
 
 ### Patch Changes
