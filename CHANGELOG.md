@@ -1,5 +1,15 @@
 # mantine-template
 
+## 0.2.0
+
+### Minor Changes
+
+- [#13](https://github.com/KemingHe/mantine-template/pull/13) [`d70cd15`](https://github.com/KemingHe/mantine-template/commit/d70cd1564988f68a0037085cbe0d3fdde263a7cc) Thanks [@KemingHe](https://github.com/KemingHe)! - Prototyped responsive main layout and navbar with statful categories.
+
+### Patch Changes
+
+- [#13](https://github.com/KemingHe/mantine-template/pull/13) [`d70cd15`](https://github.com/KemingHe/mantine-template/commit/d70cd1564988f68a0037085cbe0d3fdde263a7cc) Thanks [@KemingHe](https://github.com/KemingHe)! - Removed boilerplate welcome and toggle theme comps.
+
 ## 0.1.3
 
 ### Patch Changes
