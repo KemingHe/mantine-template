@@ -1,84 +1,205 @@
 'use client';
 
-import { Button, Group, Stack } from '@mantine/core';
-import { useMediaQuery } from '@mantine/hooks';
-import { IconFileText, IconHistory, IconSettings } from '@tabler/icons-react';
+import {
+  AppShell,
+  Box,
+  Burger,
+  Center,
+  Group,
+  Image,
+  ScrollArea,
+  Skeleton,
+  Stack,
+  Text,
+  ThemeIcon,
+  UnstyledButton,
+} from '@mantine/core';
+import { useDisclosure } from '@mantine/hooks';
+import { IconFolder, IconHistory, IconSettings } from '@tabler/icons-react';
+import { useState } from 'react';
 import type { ReactElement } from 'react';
 
-export const ChatPage = (): ReactElement => {
-  const isMobile = useMediaQuery('(max-width: 62em)');
+type Category = 'history' | 'files' | 'settings';
 
-  const navItems = [
-    { icon: <IconHistory size={20} />, label: 'History' },
-    { icon: <IconFileText size={20} />, label: 'Documents' },
-    { icon: <IconSettings size={20} />, label: 'Settings' },
-  ];
+interface CategoryItem {
+  icon: typeof IconHistory;
+  label: string;
+  value: Category;
+}
+
+const categories: CategoryItem[] = [
+  { icon: IconHistory, label: 'History', value: 'history' },
+  { icon: IconFolder, label: 'Files', value: 'files' },
+  { icon: IconSettings, label: 'Settings', value: 'settings' },
+];
+
+export const ChatPage = (): ReactElement => {
+  const [mobileOpened, { toggle: toggleMobile }] = useDisclosure();
+  const [desktopOpened, { toggle: toggleDesktop }] = useDisclosure(true);
+  const [activeCategory, setActiveCategory] = useState<Category>('history');
+
+  // Fixed width for the navigation column
+  const navColumnWidth = 60;
 
   return (
-    <Stack h="100vh" gap={0}>
-      <Group h="100%" align="flex-start" wrap="nowrap">
-        {/* Side navbar for desktop */}
-        {!isMobile && (
-          <Stack
-            w={80}
-            h="100%"
-            p="md"
-            gap="xl"
-            style={{
-              borderRight: '1px solid var(--mantine-color-gray-3)',
-              background: 'var(--mantine-color-body)',
-            }}
-          >
-            <Stack gap="md" align="center">
-              {navItems.map((item) => (
-                <Button
-                  key={item.label}
-                  variant="subtle"
-                  p="xs"
-                  style={{ width: '100%' }}
-                >
-                  <Stack gap={4} align="center">
-                    {item.icon}
-                    <span style={{ fontSize: 'var(--mantine-font-size-xs)' }}>
-                      {item.label}
-                    </span>
-                  </Stack>
-                </Button>
-              ))}
-            </Stack>
-          </Stack>
-        )}
-
-        {/* Main content */}
-        <Stack flex={1} p="md" style={{ overflow: 'auto' }}>
-          <div>Chat Content</div>
-        </Stack>
-      </Group>
-
-      {/* Bottom navbar for mobile */}
-      {isMobile && (
-        <Group
-          p="xs"
-          style={{
-            borderTop: '1px solid var(--mantine-color-gray-3)',
-            position: 'fixed',
-            bottom: 0,
-            left: 0,
-            right: 0,
-            background: 'var(--mantine-color-body)',
-          }}
-          justify="space-around"
-        >
-          {navItems.map((item) => (
-            <Button key={item.label} variant="subtle">
-              <Stack gap={4} align="center">
-                {item.icon}
-                <span>{item.label}</span>
-              </Stack>
-            </Button>
-          ))}
+    <AppShell
+      header={{ height: 60 }}
+      navbar={{
+        width: { base: 200, md: 300, lg: 400 },
+        breakpoint: 'sm',
+        collapsed: { mobile: !mobileOpened, desktop: !desktopOpened },
+      }}
+      padding="md"
+    >
+      <AppShell.Header>
+        <Group h="100%" px="md">
+          <Burger
+            opened={mobileOpened}
+            onClick={toggleMobile}
+            hiddenFrom="sm"
+            size="sm"
+          />
+          <Burger
+            opened={desktopOpened}
+            onClick={toggleDesktop}
+            visibleFrom="sm"
+            size="sm"
+          />
         </Group>
-      )}
+      </AppShell.Header>
+      <AppShell.Navbar
+        p="md"
+        style={{
+          display: 'grid',
+          gridTemplateColumns: `${navColumnWidth}px 1fr`,
+          gridTemplateRows: 'auto 1fr auto',
+        }}
+      >
+        {/* Header row */}
+        <AppShell.Section style={{ gridColumn: '1', gridRow: '1' }}>
+          <Center h={40}>
+            <Image
+              src="/images/mantine-template-icon-512x512px-transparent.png"
+              alt="Mantine Template"
+              w={32}
+              h={32}
+            />
+          </Center>
+        </AppShell.Section>
+
+        <AppShell.Section style={{ gridColumn: '2', gridRow: '1' }}>
+          <Box h={40} p="xs" style={{ display: 'flex', alignItems: 'center' }}>
+            <Text fw={500} truncate>
+              {categories.find((cat) => cat.value === activeCategory)?.label}
+            </Text>
+          </Box>
+        </AppShell.Section>
+
+        {/* Navigation sidebar */}
+        <AppShell.Section
+          component={ScrollArea}
+          grow
+          style={{ gridColumn: '1', gridRow: '2' }}
+        >
+          <Stack gap="xs" align="center" py="xs">
+            {categories.map((category: CategoryItem) => (
+              <UnstyledButton
+                key={category.value}
+                onClick={() => setActiveCategory(category.value)}
+                p="xs"
+                style={{
+                  backgroundColor:
+                    activeCategory === category.value
+                      ? 'var(--mantine-color-blue-light)'
+                      : undefined,
+                  borderRadius: 'var(--mantine-radius-sm)',
+                  width: '100%',
+                  display: 'flex',
+                  justifyContent: 'center',
+                }}
+              >
+                <ThemeIcon variant="light" size="md">
+                  <category.icon size={18} stroke={1.5} />
+                </ThemeIcon>
+              </UnstyledButton>
+            ))}
+          </Stack>
+        </AppShell.Section>
+
+        {/* Content area */}
+        <AppShell.Section
+          component={ScrollArea}
+          grow
+          style={{ gridColumn: '2', gridRow: '2' }}
+        >
+          {activeCategory === 'history' && <HistoryContent />}
+          {activeCategory === 'files' && <FilesContent />}
+          {activeCategory === 'settings' && <SettingsContent />}
+        </AppShell.Section>
+
+        {/* Footer */}
+        <AppShell.Section
+          style={{ gridColumn: '1 / span 2', gridRow: '3' }}
+          py="xs"
+        >
+          Navbar footer always at the bottom
+        </AppShell.Section>
+      </AppShell.Navbar>
+      <AppShell.Main>Main</AppShell.Main>
+    </AppShell>
+  );
+};
+
+const HistoryContent = (): ReactElement => {
+  const mockHistory = Array(30)
+    .fill(0)
+    .map((_, i) => ({
+      id: `history-${i + 1}`,
+      title: `Chat ${i + 1}`,
+    }));
+
+  return (
+    <Stack p="xs">
+      <Text size="sm">Recent chat history</Text>
+      {mockHistory.map((item) => (
+        <Skeleton key={item.id} h={28} mt="sm" animate={false} />
+      ))}
+    </Stack>
+  );
+};
+
+const FilesContent = (): ReactElement => {
+  const mockFiles = Array(30)
+    .fill(0)
+    .map((_, i) => ({
+      id: `file-${i + 1}`,
+      name: `File ${i + 1}`,
+    }));
+
+  return (
+    <Stack p="xs">
+      <Text size="sm">Your project files</Text>
+      {mockFiles.map((item) => (
+        <Skeleton key={item.id} h={28} mt="sm" animate={false} />
+      ))}
+    </Stack>
+  );
+};
+
+const SettingsContent = (): ReactElement => {
+  const mockSettings = Array(30)
+    .fill(0)
+    .map((_, i) => ({
+      id: `setting-${i + 1}`,
+      name: `Setting ${i + 1}`,
+    }));
+
+  return (
+    <Stack p="xs">
+      <Text size="sm">Chat settings and preferences</Text>
+      {mockSettings.map((item) => (
+        <Skeleton key={item.id} h={28} mt="sm" animate={false} />
+      ))}
     </Stack>
   );
 };
