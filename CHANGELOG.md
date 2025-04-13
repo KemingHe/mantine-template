@@ -1,5 +1,11 @@
 # mantine-template
 
+## 0.4.0
+
+### Minor Changes
+
+- [#23](https://github.com/KemingHe/mantine-template/pull/23) [`a26d7e7`](https://github.com/KemingHe/mantine-template/commit/a26d7e7f64af933ff3078dd3ec9f53ef22e7f189) Thanks [@KemingHe](https://github.com/KemingHe)! - Added multi-step Google Search-enhanced answering with Gemini 2.0 Flash.
+
 ## 0.3.0
 
 ### Minor Changes
