@@ -2,7 +2,7 @@
   "private": true,
   "type": "module",
   "name": "mantine-template",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "SaaS template built with Mantine, including AI chat, auth, admin dashboard, etc. MIT License.",
   "keywords": [
     "nextjs",
