@@ -1,5 +1,15 @@
 # mantine-template
 
+## 0.3.0
+
+### Minor Changes
+
+- [#21](https://github.com/KemingHe/mantine-template/pull/21) [`c7015c5`](https://github.com/KemingHe/mantine-template/commit/c7015c5abadc79a261ab14920dceb8131978d388) Thanks [@KemingHe](https://github.com/KemingHe)! - Changed Vercel custom domain to proto.buckeye.chat for simplicity. Added Google genai (gemini 2.0 flash) endpoint with max 60s function duration to ensure full stream.
+
+### Patch Changes
+
+- [#21](https://github.com/KemingHe/mantine-template/pull/21) [`ca33421`](https://github.com/KemingHe/mantine-template/commit/ca334215c9db2d56e12fb31ccdbff177aaa42dd8) Thanks [@KemingHe](https://github.com/KemingHe)! - Upgraded pnpm via corepack and upgraded deps to next minor/patch versions.
+
 ## 0.2.0
 
 ### Minor Changes
