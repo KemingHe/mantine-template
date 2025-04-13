@@ -24,6 +24,12 @@ const Page = (): ReactElement => {
                       {part.text}
                     </Text>
                   );
+                // case 'tool-invocation':
+                //   return (
+                //     <pre key={`${message.id}-${i}`}>
+                //       {JSON.stringify(part.toolInvocation, null, 2)}
+                //     </pre>
+                //   );
               }
             })}
           </Box>
