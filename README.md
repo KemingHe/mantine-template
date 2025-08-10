@@ -1,4 +1,11 @@
-# Mantine Next.js template
+# ⚠️ [Archived] ⚠️ Mantine Next.js template
+
+> [!WARNING]
+> **This repository is archived and no longer maintained.**
+>
+> - **Archived**: 2025-08-10 by [@KemingHe](https://github.com/KemingHe)
+> - **Archive reason**: moved on to using [Chakra UI V3](https://www.chakra-ui.com/) for frontend templating
+> - **Inquries and corrections**: email [keminghe.career@gmail.com](mailto:keminghe.career@gmail.com)
 
 This is a template for [Next.js](https://nextjs.org/) app router + [Mantine](https://mantine.dev/).
 If you want to use pages router instead, see [next-pages-template](https://github.com/mantinedev/next-pages-template).
